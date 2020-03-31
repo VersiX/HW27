@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>27 JS</title>
+    <link rel="stylesheet" href="style/normalize.css">
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+
+    <style>
+        @font-face {
+            font-family: "Roboto Mono";
+            src: url("fonts/RobotoMono-Regular.ttf");
+            font-weight: 400;
+        }
+
+        @font-face {
+            font-family: "Roboto Mono";
+            src: url("fonts/RobotoMono-Light.ttf");
+            font-weight: 300;
+        }
+
+        @font-face {
+            font-family: "Roboto Mono";
+            src: url("fonts/RobotoMono-Bold.ttf");
+            font-weight: bold;
+        }
+
+        * {
+            font-family: "Roboto Mono";
+            color: white;
+        }
+    </style>
+</head>
+
+<body class="bg-dark">
+
+    <div class="container">
+        <header class="row flex-column align-content-center header m-5 text-center">
+
+            <h1 class="display-3">
+                HomeWork №27
+            </h1>
+            <h2 class="font-weight-light">
+                Made by Yurii
+            </h2>
+
+        </header>
+
+        <div id="accordion" class="">
+            <div class="card bg-dark">
+                <div class="card-header">
+                    <button type="button" class="btn btn-lg btn-outline-info" data-toggle="collapse"
+                        href="#collapseOne">
+                        Product List
+                    </button>
+                </div>
+                <div id="collapseOne" class="collapse show" data-parent="#accordion">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <button type="button" class="btn btn-outline-info btn-block"
+                                    onclick="printPLList()">Show
+                                    Product
+                                    List</button>
+                            </div>
+                            <div class="col-md-4">
+                                <input class="form-control mb-3" type="text" name="pl_name" id="pl_add_name"
+                                    placeholder="Product name...">
+                                <input class="form-control mb-3" type="number" name="pl_quantity" id="pl_add_quantity"
+                                    placeholder="Product name...">
+                                <button type="button" class="btn btn-outline-info btn-block" onclick="AddToPL()">Add
+                                    Product</button>
+                            </div>
+                            <div class="col-md-4">
+                                <input class="form-control mb-3" type="text" name="pl_name" id="pl_name_bought"
+                                    placeholder="Product name...">
+
+                                <button type="button" class="btn btn-outline-info btn-block" onclick="setBoughtPL()">Set
+                                    Bought</button>
+                            </div>
+                        </div>
+                        <div class="border border-info rounded mt-5 bg-dark p-3">
+                            <div id="pl_out" class="">
+                                Output
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card bg-dark">
+                <div class="card-header">
+                    <button type="button" class="collapsed btn btn-lg btn-outline-info" data-toggle="collapse"
+                        href="#collapseTwo">
+                        Shopping Check
+                    </button>
+                </div>
+                <div id="collapseTwo" class="collapse" data-parent="#accordion">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <button type="button" class="btn btn-outline-info btn-block"
+                                    onclick="printSCList()">Show Shopping Check</button>
+                            </div>
+                            <div class="col-md-3">
+                                <button type="button" class="btn btn-outline-info btn-block"
+                                    onclick="SCgetTotalPrice()">Total price</button>
+                            </div>
+                            <div class="col-md-3">
+                                <button type="button" class="btn btn-outline-info btn-block"
+                                    onclick="SCMostExpensive()">Most expensive item</button>
+                            </div>
+                            <div class="col-md-3">
+
+                                <button type="button" class="btn btn-outline-info btn-block" onclick="SCAvg()">Average
+                                    price</button>
+                            </div>
+                        </div>
+                        <div class="border border-info rounded mt-5 bg-dark p-3">
+                            <div id="sc_out" class="">
+                                Output
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card bg-dark">
+                <div class="card-header">
+                    <button type="button" class="collapsed btn btn-lg btn-outline-info" data-toggle="collapse"
+                        href="#collapseThree">
+                        Text Styling
+                    </button>
+                </div>
+                <div id="collapseThree" class="collapse" data-parent="#accordion">
+                    <div class="card-body">
+                        <textarea class="form-control" name="txt_input" id="st_in" cols="30" rows="5"></textarea>
+                        <button type="button" class="btn btn-outline-info btn-block mt-3" onclick="printStyle()">Print
+                            styled
+                            text</button>
+
+                        <div class="border border-info rounded mt-5 bg-dark p-3">
+                            <div id="st_out" class="">
+                                Output
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card bg-dark">
+                <div class="card-header">
+                    <button type="button" class="collapsed btn btn-lg btn-outline-info" data-toggle="collapse"
+                        href="#collapseFour">
+                        Academy Audiences
+                    </button>
+                </div>
+                <div id="collapseFour" class="collapse" data-parent="#accordion">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <button type="button" class="btn btn-outline-info btn-block" onclick="printAA()">Show
+                                    all Audiences</button>
+                                <button type="button" class="btn btn-outline-info btn-block" onclick="AASortName()">Sort
+                                    by name</button>
+                                <button type="button" class="btn btn-outline-info btn-block"
+                                    onclick="AASortMaxPeople()">Sort by max people</button>
+                            </div>
+                            <div class="col-md-4">
+                                <select class="form-control" id="aa_select_faculty" name="faculty">
+                                    <option>Faculty of Mice and Men</option>
+                                    <option>Gryffindor</option>
+                                    <option>Faculty of Not Found Pages</option>
+                                </select>
+
+                                <button type="button" class="btn btn-outline-info btn-block mt-3"
+                                    onclick="AAByFaculty()">Select audience for faculty</button>
+                            </div>
+                            <div class="col-md-4">
+                                <select class="form-control" id="aa_select_group" name="group">
+                                    <option>Small</option>
+                                    <option>Large</option>
+                                </select>
+
+                                <button type="button" class="btn btn-outline-info btn-block mt-3"
+                                    onclick="AAForGroup()">Select audience for group</button>
+                            </div>
+                        </div>
+
+
+
+
+                        <div class="border border-info rounded mt-5 bg-dark p-3">
+                            <div id="aa_out" class="">
+                                Output
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+
+    <script src="script/func.js"></script>
+</body>
+
+</html>
