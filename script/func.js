@@ -1,28 +1,3 @@
-let PL_out = document.getElementById("pl_out");
-let SC_out = document.getElementById("sc_out");
-let ST_out = document.getElementById("st_out")
-let AA_out = document.getElementById("aa_out");
-
-// -------------------------
-// Product List UI Functions
-// -------------------------
-function printPLList() {
-    PL_out.innerHTML = ProductList.getList();
-}
-
-function AddToPL() {
-    let name = document.getElementById("pl_add_name").value;
-    let quantity = document.getElementById("pl_add_quantity").value;
-    ProductList.addItem(name, quantity);
-    printPLList();
-}
-
-function setBoughtPL() {
-    let name = document.getElementById("pl_name_bought").value;
-    ProductList.setBought(name);
-    printPLList();
-}
-
 // ---------------------------
 // Product List Implementation
 // ---------------------------
@@ -104,30 +79,11 @@ let ProductList = {
     }
 };
 
-// ---------------------------
-// Shopping Check UI Functions
-// ---------------------------
-function printSCList() {
-    SC_out.innerHTML = ShoppingCheck.getCheck();
-}
 
-function SCgetTotalPrice() {
-    SC_out.innerHTML = "Total price of items: " + ShoppingCheck.getTotalPrice();
-}
-
-function SCMostExpensive() {
-    let item = ShoppingCheck.getMostExpensive();
-    SC_out.innerHTML = `The most expensive item is: ${item.name} for ${item.price}$`;
-}
-
-function SCAvg() {
-    SC_out.innerHTML = "Average price of items: " + ShoppingCheck.getAvgPrice() + "$";
-}
 
 // -----------------------------
 // Shopping Check Implementation
 // -----------------------------
-
 let ShoppingCheck = {
     list: [
         {
@@ -210,24 +166,13 @@ let ShoppingCheck = {
         return total / listLength;
     }
 
-}
+};
 
-// -------------------------
-// Styles Array UI Functions
-// -------------------------
-
-function printStyle() {
-    let input = document.getElementById("st_in").value;
-    ST_out.innerHTML = addText(input, styles);
-
-}
 
 
 // ---------------------------
 // Styles Array Implementation
 // ---------------------------
-
-
 let styles = [
     {
         name: "font-size",
@@ -235,7 +180,7 @@ let styles = [
     },
     {
         name: "color",
-        value: "#999999"
+        value: "#aaaaaa"
     },
     {
         name: "text-align",
@@ -246,7 +191,6 @@ let styles = [
         value: "underline"
     }
 ];
-
 function addText(text, style) {
     let output = '<p style="'
 
@@ -258,49 +202,10 @@ function addText(text, style) {
 }
 
 
-// ------------------------------
-// Academy Audiences UI Functions
-// ------------------------------
-
-function printAA() {
-    AA_out.innerHTML = AcademyAudiences.getAudiences();
-}
-
-function AAByFaculty() {
-    let faculty = document.getElementById("aa_select_faculty").value;
-
-    AA_out.innerHTML = AcademyAudiences.getAudByFaculty(faculty);
-}
-
-function AAForGroup() {
-    let group = document.getElementById("aa_select_group").value;
-    let groupindex;
-
-    if (group == "Large") {
-        groupindex = 1;
-    }
-    else {
-        groupindex = 0;
-    }
-
-    AA_out.innerHTML = AcademyAudiences.getAudForGroup(StudentGroups[groupindex]);
-}
-
-function AASortName() {
-    AcademyAudiences.sortByName();
-    printAA();
-}
-
-function AASortMaxPeople() {
-    AcademyAudiences.sortByMaxPeople();
-    printAA();
-}
 
 // --------------------------------
 // Academy Audiences Implementation
 // --------------------------------
-
-
 let AcademyAudiences = {
     list: [
         {
@@ -397,9 +302,7 @@ let AcademyAudiences = {
 
     }
 
-}
-
-
+};
 let StudentGroups = [
     {
         name: "group1",
@@ -413,3 +316,117 @@ let StudentGroups = [
     }
 
 ];
+
+
+
+
+
+
+
+
+
+
+
+
+
+let PL_out = document.getElementById("pl_out");
+let SC_out = document.getElementById("sc_out");
+let ST_out = document.getElementById("st_out")
+let AA_out = document.getElementById("aa_out");
+
+// -------------------------
+// Product List UI Functions
+// -------------------------
+function printPLList() {
+    PL_out.innerHTML = ProductList.getList();
+}
+
+function AddToPL() {
+    let name = document.getElementById("pl_add_name").value;
+    let quantity = document.getElementById("pl_add_quantity").value;
+    ProductList.addItem(name, quantity);
+    printPLList();
+}
+
+function setBoughtPL() {
+    let name = document.getElementById("pl_name_bought").value;
+    ProductList.setBought(name);
+    printPLList();
+}
+
+
+
+
+// ---------------------------
+// Shopping Check UI Functions
+// ---------------------------
+function printSCList() {
+    SC_out.innerHTML = ShoppingCheck.getCheck();
+}
+
+function SCgetTotalPrice() {
+    SC_out.innerHTML = "Total price of items: " + ShoppingCheck.getTotalPrice();
+}
+
+function SCMostExpensive() {
+    let item = ShoppingCheck.getMostExpensive();
+    SC_out.innerHTML = `The most expensive item is: ${item.name} for ${item.price}$`;
+}
+
+function SCAvg() {
+    SC_out.innerHTML = "Average price of items: " + ShoppingCheck.getAvgPrice() + "$";
+}
+
+
+
+
+// -------------------------
+// Styles Array UI Functions
+// -------------------------
+
+function printStyle() {
+    let input = document.getElementById("st_in").value;
+    ST_out.innerHTML = addText(input, styles);
+
+}
+
+
+
+
+// ------------------------------
+// Academy Audiences UI Functions
+// ------------------------------
+
+function printAA() {
+    AA_out.innerHTML = AcademyAudiences.getAudiences();
+}
+
+function AAByFaculty() {
+    let faculty = document.getElementById("aa_select_faculty").value;
+
+    AA_out.innerHTML = AcademyAudiences.getAudByFaculty(faculty);
+}
+
+function AAForGroup() {
+    let group = document.getElementById("aa_select_group").value;
+    let groupindex;
+
+    if (group == "Large") {
+        groupindex = 1;
+    }
+    else {
+        groupindex = 0;
+    }
+
+    AA_out.innerHTML = AcademyAudiences.getAudForGroup(StudentGroups[groupindex]);
+}
+
+function AASortName() {
+    AcademyAudiences.sortByName();
+    printAA();
+}
+
+function AASortMaxPeople() {
+    AcademyAudiences.sortByMaxPeople();
+    printAA();
+}
